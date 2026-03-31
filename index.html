@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Favorite Santa Claus | Premium Holiday Magic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,900&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crimson: '#8B0000',
+                        deepCrimson: '#4A0404',
+                        champagne: '#F7E7CE',
+                        frosted: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8FAFC;
+            cursor: none;
+            overflow-x: hidden;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f1f5f9 100%);
+        }
+        
+        .magic-cursor {
+            width: 20px;
+            height: 20px;
+            background: rgba(212, 175, 55, 0.4);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease-out;
+            filter: blur(4px);
+        }
+        
+        .snow-particle {
+            position: fixed;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .parallax-node {
+            transition: transform 0.2s cubic-bezier(0.1, 0, 0.3, 1);
+        }
+    </style>
+</head>
+
+<body class="font-sans text-slate-900" x-data="{ mobileMenu: false }">
+
+    <!-- Magic Cursor Trail -->
+    <div id="cursor" class="magic-cursor"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass rounded-full px-8 py-3 shadow-sm">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-crimson rounded-full flex items-center justify-center shadow-lg">
+                    <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/Group-1171275012-1.jpg" width="30" alt="Santa Claus">
+                </div>
+                <span class="font-serif font-bold text-xl tracking-tight text-deepCrimson">Your Favorite Santa Claus</span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8 font-semibold text-sm uppercase tracking-widest text-slate-600">
+                <a href="#legend" class="hover:text-crimson transition-colors">The Legend</a>
+                <a href="#services" class="hover:text-crimson transition-colors">Services</a>
+                <a href="#gallery" class="hover:text-crimson transition-colors">Gallery</a>
+                <a href="#contact" class="bg-crimson text-frosted px-6 py-2 rounded-full shadow-lg hover:bg-deepCrimson transition-all transform hover:scale-105">Book Now</a>
+            </div>
+
+            <button @click="mobileMenu = !mobileMenu" class="md:hidden text-deepCrimson">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden hero-gradient pt-20">
+        <!-- Parallax Background Elements -->
+        <div class="parallax-node absolute top-20 left-10 opacity-20 transform -rotate-12">
+        </div>
+        <div class="parallax-node absolute bottom-20 right-10 opacity-20 transform rotate-12">
+            <img src="https://cdn-icons-png.flaticon.com/512/614/614131.png" width="200" alt="ornament">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-crimson/5 text-crimson font-bold text-xs uppercase tracking-widest border border-crimson/10">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-crimson opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-crimson"></span>
+                    </span>
+                    Booking for Winter 2026
+                </div>
+                <h1 class="text-7xl md:text-8xl font-serif font-black text-deepCrimson leading-tight">
+                    More Than A <br><span class="text-crimson italic">Memory.</span>
+                </h1>
+                <p class="text-xl text-slate-600 max-w-lg leading-relaxed">
+                    A premium, authentic Santa experience for those who believe the magic should be as real as the joy it brings. From velvet suits to heart-to-heart stories.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="group relative px-8 py-4 bg-crimson text-white rounded-full font-bold text-lg shadow-[0_10px_20px_-5px_rgba(139,0,0,0.4)] hover:shadow-[0_15px_30px_-5px_rgba(139,0,0,0.6)] transition-all overflow-hidden">
+                        <span class="relative z-10 flex items-center gap-2">Book Your Magic <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i></span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-deepCrimson to-crimson opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </button>
+                    <button class="px-8 py-4 bg-white/50 backdrop-blur-md border border-slate-200 text-deepCrimson rounded-full font-bold text-lg hover:bg-white transition-colors">
+                        Watch The Spirit
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <!-- 3D Render Santa Image Placeholder (UX representation) -->
+                <div class="relative z-20 transform transition-transform duration-700 group-hover:scale-105">
+                    <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/FullSizeRender-12-scaled.jpeg" alt="Premium Santa Claus" class="rounded-[2rem] shadow-2xl border-[12px] border-white ring-1 ring-slate-200">
+                    <!-- Overlapping Badge -->
+                    <div class="absolute -bottom-10 -left-10 glass p-6 rounded-3xl shadow-xl border-champagne/50">
+                        <div class="flex gap-1 text-yellow-500 mb-2">
+                            <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                            <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                            <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                            <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                            <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        </div>
+                        <p class="font-bold text-deepCrimson">"The most realistic Santa <br>we've ever had."</p>
+                        <p class="text-xs text-slate-500 mt-1">— The Waldorf Astoria</p>
+                    </div>
+                </div>
+                <!-- Decorative Gold Circle -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-champagne rounded-full -z-10 opacity-50 animate-[spin_20s_linear_infinite]"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legend Section -->
+    <section id="legend" class="py-32 relative bg-white overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <i data-lucide="scroll-text" class="w-12 h-12 text-crimson mx-auto mb-6"></i>
+            <h2 class="text-5xl font-serif font-bold text-deepCrimson mb-12 italic">A Tradition of Wonder</h2>
+            <div class="space-y-8 text-xl leading-relaxed text-slate-600 font-light">
+                <p>
+                    It begins with a single bell ringing in the crisp winter air. Since 1998, I have dedicated my life to preserving the <span class="text-crimson font-semibold">Authentic Spirit of Christmas</span>. This isn't a costume; it's a calling.
+                </p>
+                <div class="grid grid-cols-3 gap-8 py-12">
+                    <div>
+                        <div class="text-4xl font-serif font-bold text-crimson">25+</div>
+                        <div class="text-sm uppercase tracking-widest text-slate-400 mt-2">Years of Joy</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-serif font-bold text-crimson">10k+</div>
+                        <div class="text-sm uppercase tracking-widest text-slate-400 mt-2">Smiles Delivered</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-serif font-bold text-crimson">100%</div>
+                        <div class="text-sm uppercase tracking-widest text-slate-400 mt-2">Real Beard</div>
+                    </div>
+                </div>
+                <p>
+                    From the hand-stitched velvet of the suit to the twinkle in my eye, every detail is crafted to ensure that for one magical moment, the world of wonder is very, very real.
+                </p>
+            </div>
+        </div>
+        <!-- Abstract Pine Branch Background -->
+        <img src="https://png.pngtree.com/png-vector/20230912/ourmid/pngtree-fir-branch-vector-png-image_10023419.png" class="absolute -right-20 top-40 opacity-5 w-96 transform rotate-45 pointer-events-none">
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-32 bg-frosted">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
+                <div>
+                    <p class="text-crimson font-bold tracking-widest uppercase text-sm mb-4">Choose Your Experience</p>
+                    <h2 class="text-6xl font-serif font-bold text-deepCrimson">The Gift of Presence</h2>
+                </div>
+                <p class="max-w-sm text-slate-500 pb-2">Bespoke holiday services tailored to families, creators, and world-class organizations.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group relative aspect-square glass rounded-full p-12 flex flex-col items-center justify-center text-center transition-all duration-500 hover:bg-crimson hover:scale-105 shadow-xl">
+                    <div class="w-16 h-16 rounded-full bg-crimson/10 group-hover:bg-white/20 flex items-center justify-center mb-6 transition-colors">
+                        <i data-lucide="home" class="text-crimson group-hover:text-white w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold text-deepCrimson group-hover:text-white mb-4">Home Visits</h3>
+                    <p class="text-slate-500 group-hover:text-frosted/80 text-sm leading-relaxed">
+                        Intimate storytelling, gift distribution, and photos in the comfort of your living room.
+                    </p>
+                    <div class="mt-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white font-bold border-b border-white pb-1">Learn More</span>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group relative aspect-square glass rounded-full p-12 flex flex-col items-center justify-center text-center transition-all duration-500 hover:bg-crimson hover:scale-105 shadow-xl">
+                    <div class="w-16 h-16 rounded-full bg-crimson/10 group-hover:bg-white/20 flex items-center justify-center mb-6 transition-colors">
+                        <i data-lucide="video" class="text-crimson group-hover:text-white w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold text-deepCrimson group-hover:text-white mb-4">Virtual Calls</h3>
+                    <p class="text-slate-500 group-hover:text-frosted/80 text-sm leading-relaxed">
+                        High-definition 4K magic streamed directly from the North Pole Workshop to your screen.
+                    </p>
+                    <div class="mt-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white font-bold border-b border-white pb-1">Learn More</span>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group relative aspect-square glass rounded-full p-12 flex flex-col items-center justify-center text-center transition-all duration-500 hover:bg-crimson hover:scale-105 shadow-xl">
+                    <div class="w-16 h-16 rounded-full bg-crimson/10 group-hover:bg-white/20 flex items-center justify-center mb-6 transition-colors">
+                        <i data-lucide="building-2" class="text-crimson group-hover:text-white w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif font-bold text-deepCrimson group-hover:text-white mb-4">Corporate</h3>
+                    <p class="text-slate-500 group-hover:text-frosted/80 text-sm leading-relaxed">
+                        Galas, brand campaigns, and professional events requiring the world's most authentic Santa.
+                    </p>
+                    <div class="mt-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="text-white font-bold border-b border-white pb-1">Learn More</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-serif font-bold text-deepCrimson mb-16 text-center">Caught In The Moment</h2>
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                <div class="overflow-hidden rounded-3xl group">
+                    <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/imgi_13_562312_9b3eb29e4e84463d9757f1ff86611d99mv2-1.png" class="w-full transform group-hover:scale-110 transition-transform duration-700" alt="Santa Joy">
+                </div>
+                <div class="overflow-hidden rounded-3xl group">
+                    <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/imgi_5_562312_a877bd2f7b2e43b9a5e9d9dcbcfa2785mv2-1-1.png" class="w-full transform group-hover:scale-110 transition-transform duration-700" alt="Santa Kids">
+                </div>
+                <div class="overflow-hidden rounded-3xl group">
+                    <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/imgi_9_562312_e1f44576a96e421290a9cabc9f10ec11mv2-2.png" class="w-full transform group-hover:scale-110 transition-transform duration-700" alt="Santa Kids">
+                </div>
+                <div class="overflow-hidden rounded-3xl group">
+                    <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/imgi_9_562312_e1f44576a96e421290a9cabc9f10ec11mv2-1.png" class="w-full transform group-hover:scale-110 transition-transform duration-700" alt="Santa Kids">
+                </div>
+                <div class="overflow-hidden rounded-3xl group">
+                    <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/imgi_12_562312_f0a6e43e5bdc45808c5d17de0a78f486mv2-1.png" class="w-full transform group-hover:scale-110 transition-transform duration-700" alt="Magic Decor">
+                </div>
+                <div class="overflow-hidden rounded-3xl group">
+                    <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/imgi_10_562312_27d0d09967694a3aa80880c1bcc0f02fmv2-1.png" class="w-full transform group-hover:scale-110 transition-transform duration-700" alt="Gift">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/CTA -->
+    <section id="contact" class="py-32 relative bg-deepCrimson text-frosted">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div class="space-y-8">
+                <h2 class="text-6xl font-serif font-bold text-glow">The Naughty & Nice List is Filling Fast.</h2>
+                <p class="text-xl text-frosted/70 leading-relaxed">
+                    Reserve your date for the most magical season yet. From private Colorado mountain retreats to global virtual greetings.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+                            <i data-lucide="phone" class="w-5 h-5 text-champagne"></i>
+                        </div>
+                        <span class="text-xl">970-210-1232</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+                            <i data-lucide="mail" class="w-5 h-5 text-champagne"></i>
+                        </div>
+                        <span class="text-xl">northpole@yourfavoritesanta.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="glass !bg-white/10 p-10 rounded-[2.5rem] border-white/20">
+                <form class="space-y-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-widest font-bold opacity-60">Your Name</label>
+                            <input type="text" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 ring-champagne/50">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs uppercase tracking-widest font-bold opacity-60">Event Date</label>
+                            <input type="date" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 ring-champagne/50">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs uppercase tracking-widest font-bold opacity-60">Service Type</label>
+                        <select class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 ring-champagne/50">
+                            <option class="text-slate-900">Home Visit</option>
+                            <option class="text-slate-900">Virtual Magic</option>
+                            <option class="text-slate-900">Corporate Gala</option>
+                        </select>
+                    </div>
+                    <button class="w-full py-4 bg-champagne text-deepCrimson rounded-xl font-black text-lg shadow-xl hover:bg-white transition-all transform hover:-translate-y-1">
+                        Send Letter to Santa
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-black text-white/40 text-center text-sm border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p>&copy; 2024 Your Favorite Santa Claus. Preserving the wonder of the world.</p>
+            <div class="flex gap-8">
+                <a href="#" class="hover:text-white transition-colors">Instagram</a>
+                <a href="#" class="hover:text-white transition-colors">TikTok</a>
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Magic Cursor Effect
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+
+            // Randomly create "sparkle" snow dust
+            if (Math.random() > 0.9) {
+                createSnowDust(e.clientX, e.clientY);
+            }
+
+            // Parallax Background items
+            const nodes = document.querySelectorAll('.parallax-node');
+            nodes.forEach(node => {
+                const speed = 0.02;
+                const x = (window.innerWidth - e.pageX * speed) / 100;
+                const y = (window.innerHeight - e.pageY * speed) / 100;
+                node.style.transform = `translateX(${x}px) translateY(${y}px)`;
+            });
+        });
+
+        function createSnowDust(x, y) {
+            const p = document.createElement('div');
+            p.className = 'snow-particle';
+            const size = Math.random() * 4 + 2;
+            p.style.width = size + 'px';
+            p.style.height = size + 'px';
+            p.style.left = x + 'px';
+            p.style.top = y + 'px';
+            p.style.opacity = '0.6';
+            document.body.appendChild(p);
+
+            p.animate([{
+                transform: 'translateY(0) scale(1)',
+                opacity: 0.6
+            }, {
+                transform: `translateY(${Math.random() * 50}px) scale(0)`,
+                opacity: 0
+            }], {
+                duration: 1000 + Math.random() * 1000,
+                easing: 'ease-out'
+            }).onfinish = () => p.remove();
+        }
+
+        // Snowfall background
+        function spawnSnow() {
+            const snow = document.createElement('div');
+            snow.className = 'snow-particle';
+            const size = Math.random() * 5 + 2;
+            snow.style.width = size + 'px';
+            snow.style.height = size + 'px';
+            snow.style.left = Math.random() * 100 + 'vw';
+            snow.style.top = '-10px';
+            snow.style.opacity = Math.random();
+            document.body.appendChild(snow);
+
+            snow.animate([{
+                transform: 'translateY(0) translateX(0)',
+                opacity: snow.style.opacity
+            }, {
+                transform: `translateY(105vh) translateX(${Math.random() * 50 - 25}px)`,
+                opacity: 0
+            }], {
+                duration: 5000 + Math.random() * 5000,
+                easing: 'linear'
+            }).onfinish = () => snow.remove();
+        }
+        setInterval(spawnSnow, 200);
+
+        // Smooth Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-slide-up');
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(40px)';
+            el.style.transition = 'all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
